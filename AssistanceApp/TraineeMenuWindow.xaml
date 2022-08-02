@@ -1,0 +1,69 @@
+﻿<Window x:Class="AssistanceApp.TraineeMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssistanceApp"
+        mc:Ignorable="d"
+        Title="Меню"
+        ResizeMode="NoResize"
+        Icon=".\Resources\Icon.ico"
+        Height="500" Width="600"
+        Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.RowSpan="5" Grid.Row="0" Background="#FF016199"/>
+        <TextBlock Grid.Column="1" Foreground="White" Background="#FF016199">
+            <StackPanel Orientation="Horizontal">
+                <Image Source=".\Resources\logo2.png" HorizontalAlignment="Left" Width="400"/>
+                <TextBlock Text="МЕНЮ" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" TextDecorations="Underline" FontWeight="Bold"/>
+            </StackPanel>
+        </TextBlock>
+
+        <TextBlock x:Name="id_trainee" Grid.Row="4" Foreground="{x:Null}"/>
+        <Button x:Name="Exit" Grid.Row="4" Panel.ZIndex="1" VerticalAlignment="Bottom" Width="50" Height="50" Click="Exit_Click" Background="#FF016199" BorderBrush="White" ToolTip="Кнопка выхода из аккаунта.">
+            <StackPanel Orientation="Horizontal">
+                <Image Source=".\Resources\exit.png" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="1" x:Name="BtnCourse1" Click="BtnCourse1_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Gray">
+                <TextBlock Text="Курс: Контент-менеджер" Foreground="White" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Width="480" TextDecorations="Underline"/>
+                <Image Source=".\Resources\go.png" HorizontalAlignment="Right" Width="50"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="2" x:Name="BtnCourse2" Click="BtnCourse2_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Gray">
+                <TextBlock Text="Курс: Продвижение сайта и Маркетинг" Foreground="White" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Width="480" TextDecorations="Underline"/>
+                <Image Source=".\Resources\go.png" HorizontalAlignment="Right" Width="50"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="3" x:Name="BtnPaidCourse" Click="BtnPaidCourse_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Gray">
+                <TextBlock Text="Платные курсы" Foreground="White" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Width="480" TextDecorations="Underline"/>
+                <Image Source=".\Resources\go.png" HorizontalAlignment="Right" Width="50"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="4" x:Name="BtnCertification" Click="BtnCertification_Click" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Background="Gray">
+                <TextBlock Text="Моя сертификация" Foreground="White" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Width="480" TextDecorations="Underline"/>
+                <Image Source=".\Resources\go.png" HorizontalAlignment="Right" Width="50"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

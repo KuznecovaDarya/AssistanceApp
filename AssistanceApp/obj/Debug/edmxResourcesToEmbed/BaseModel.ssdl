@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище HelpModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Certification">
+    <Key>
+      <PropertyRef Name="Id_Certification" />
+    </Key>
+    <Property Name="Id_Certification" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Trainee" Type="bigint" Nullable="false" />
+    <Property Name="Id_Course" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id_Course" />
+    </Key>
+    <Property Name="Id_Course" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paid_Courses">
+    <Key>
+      <PropertyRef Name="Id_Paid_Courses" />
+    </Key>
+    <Property Name="Id_Paid_Courses" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Link" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Id_PaidCourseType" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaidCourseType">
+    <Key>
+      <PropertyRef Name="Id_PaidCourseType" />
+    </Key>
+    <Property Name="Id_PaidCourseType" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="Id_Result" />
+    </Key>
+    <Property Name="Id_Result" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Course" Type="bigint" Nullable="false" />
+    <Property Name="Id_Trainee" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Percents" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supervisor">
+    <Key>
+      <PropertyRef Name="Id_Supervisor" />
+    </Key>
+    <Property Name="Id_Supervisor" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupervisorAndTrainee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Supervisor" Type="bigint" Nullable="false" />
+    <Property Name="Id_Trainee" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="Id_Topic" />
+    </Key>
+    <Property Name="Id_Topic" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="150" Nullable="false" />
+    <Property Name="Id_Course" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trainee">
+    <Key>
+      <PropertyRef Name="Id_Trainee" />
+    </Key>
+    <Property Name="Id_Trainee" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Certification_Course1">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Certification" Type="Self.Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id_Course" />
+      </Principal>
+      <Dependent Role="Certification">
+        <PropertyRef Name="Id_Course" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Certification_Trainee1">
+    <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+    <End Role="Certification" Type="Self.Certification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainee">
+        <PropertyRef Name="Id_Trainee" />
+      </Principal>
+      <Dependent Role="Certification">
+        <PropertyRef Name="Id_Trainee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paid_Courses_PaidCourseType">
+    <End Role="PaidCourseType" Type="Self.PaidCourseType" Multiplicity="1" />
+    <End Role="Paid_Courses" Type="Self.Paid_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaidCourseType">
+        <PropertyRef Name="Id_PaidCourseType" />
+      </Principal>
+      <Dependent Role="Paid_Courses">
+        <PropertyRef Name="Id_PaidCourseType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id_Course" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Id_Course" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Trainee">
+    <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainee">
+        <PropertyRef Name="Id_Trainee" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Id_Trainee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupervisorAndTrainee_Supervisor">
+    <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="1" />
+    <End Role="SupervisorAndTrainee" Type="Self.SupervisorAndTrainee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supervisor">
+        <PropertyRef Name="Id_Supervisor" />
+      </Principal>
+      <Dependent Role="SupervisorAndTrainee">
+        <PropertyRef Name="Id_Supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupervisorAndTrainee_Trainee">
+    <End Role="Trainee" Type="Self.Trainee" Multiplicity="1" />
+    <End Role="SupervisorAndTrainee" Type="Self.SupervisorAndTrainee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainee">
+        <PropertyRef Name="Id_Trainee" />
+      </Principal>
+      <Dependent Role="SupervisorAndTrainee">
+        <PropertyRef Name="Id_Trainee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Topic_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id_Course" />
+      </Principal>
+      <Dependent Role="Topic">
+        <PropertyRef Name="Id_Course" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище HelpModelContainer">
+    <EntitySet Name="Certification" EntityType="Self.Certification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paid_Courses" EntityType="Self.Paid_Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaidCourseType" EntityType="Self.PaidCourseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupervisorAndTrainee" EntityType="Self.SupervisorAndTrainee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainee" EntityType="Self.Trainee" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Certification_Course1" Association="Self.FK_Certification_Course1">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Certification" EntitySet="Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Certification_Trainee1" Association="Self.FK_Certification_Trainee1">
+      <End Role="Trainee" EntitySet="Trainee" />
+      <End Role="Certification" EntitySet="Certification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paid_Courses_PaidCourseType" Association="Self.FK_Paid_Courses_PaidCourseType">
+      <End Role="PaidCourseType" EntitySet="PaidCourseType" />
+      <End Role="Paid_Courses" EntitySet="Paid_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Course" Association="Self.FK_Results_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Trainee" Association="Self.FK_Results_Trainee">
+      <End Role="Trainee" EntitySet="Trainee" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupervisorAndTrainee_Supervisor" Association="Self.FK_SupervisorAndTrainee_Supervisor">
+      <End Role="Supervisor" EntitySet="Supervisor" />
+      <End Role="SupervisorAndTrainee" EntitySet="SupervisorAndTrainee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupervisorAndTrainee_Trainee" Association="Self.FK_SupervisorAndTrainee_Trainee">
+      <End Role="Trainee" EntitySet="Trainee" />
+      <End Role="SupervisorAndTrainee" EntitySet="SupervisorAndTrainee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Topic_Course" Association="Self.FK_Topic_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Topic" EntitySet="Topic" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

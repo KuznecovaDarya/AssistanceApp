@@ -1,0 +1,36 @@
+﻿<Window x:Class="AssistanceApp.ControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssistanceApp"
+        Icon=".\Resources\Icon.ico"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Обучение персонала" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Image Source=".\Resources\Logo.png" HorizontalAlignment="Left"/>
+        <TextBlock Text="ОБУЧЕНИЕ ПЕРСОНАЛА" FontSize="25" Foreground="#FF0F70A8" FontWeight="Bold" TextDecorations="Underline" FontFamily="Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="BtnBack" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="BtnBack_Click" ToolTip="Назад.">
+            <Image Source=".\Resources\back.png"/>
+        </Button>
+
+        <Button x:Name="BtnExit" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnExit_Click" ToolTip="Кнопка выхода из аккаунта.">
+            <Image Source=".\Resources\exit.png"/>
+        </Button>
+
+        <TextBlock x:Name="Id" Foreground="{x:Null}" Grid.Row="2" HorizontalAlignment="Center"/>
+
+        <Button x:Name="BtnMenu" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BtnMenu_Click" ToolTip="Кнопка выхода в меню.">
+            <Image Source=".\Resources\menu.png"/>
+        </Button>
+        <Frame NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.Row="1" Name="MainFrame">
+        </Frame>
+    </Grid>
+</Window>

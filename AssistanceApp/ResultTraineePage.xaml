@@ -1,0 +1,43 @@
+﻿<Page x:Class="AssistanceApp.ResultTraineePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AssistanceApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ResultTraineePage" Background="White"
+      IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+
+        <DataGrid x:Name="DGTest" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" Background="White" BorderBrush="#FF0F5EAC" FontSize="20" LoadingRow="DGTest_LoadingRow" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Курс" Binding="{Binding Course.Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="% выполнения" Binding="{Binding Path=Percents, StringFormat=. %}" Width="180"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="DGCertification" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True" Background="White" BorderBrush="#FF0F5EAC" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Курс" Binding="{Binding Course.Name}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Допущ./Не допущ." Binding="{Binding Status}" Width="180"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Text="Доступ к сертификации" Grid.Row="2" Height="30" TextAlignment="Center" FontSize="20"/>
+        <TextBlock Text="Тестирование" Grid.Row="0" Height="30" TextAlignment="Center" FontSize="20"/>
+        <TextBlock x:Name="id" Grid.Row="0" Foreground="{x:Null}"/>
+
+        <TextBox x:Name="TBPath" Grid.Row="4" Background="#FF0F5EAC" Foreground="White" FontWeight="Bold" FontSize="18" ToolTip="Введите путь или щелкните два раза для выбора пути сохранения документа." Margin="0,0,300,0" MouseDoubleClick="TBPath_MouseDoubleClick"/>
+        <Button x:Name="BtnGrade" Content="ОЦЕНКА РЕЗУЛЬТАТОВ СТАЖЕРА" Grid.Row="4" Background="#FF0F5EAC" Click="BtnGrade_Click" Foreground="White" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right" Width="300"/>
+    </Grid>
+</Page>

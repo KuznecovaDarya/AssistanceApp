@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd66a4709fc1449bab0e9ff1a46e28fa" Name="Diagram1" ZoomLevel="68">
+        <EntityTypeShape EntityType="HelpModel.Course" Width="1.5" PointX="1" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.Paid_Courses" Width="1.5" PointX="5.375" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.PaidCourseType" Width="1.5" PointX="5.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.Results" Width="1.5" PointX="5.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.Supervisor" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.SupervisorAndTrainee" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.Topic" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpModel.Trainee" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="HelpModel.FK_Results_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpModel.FK_Topic_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpModel.FK_Paid_Courses_PaidCourseType" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpModel.FK_Results_Trainee" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpModel.FK_SupervisorAndTrainee_Supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpModel.FK_SupervisorAndTrainee_Trainee" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HelpModel.Certification" Width="1.5" PointX="1" PointY="3.75" />
+        <AssociationConnector Association="HelpModel.FK_Certification_Course1" />
+        <AssociationConnector Association="HelpModel.FK_Certification_Trainee1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
